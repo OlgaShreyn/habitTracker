@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">habitTracker</string>
+    <string name="habit_name">habit_name</string>
+    <string name="habit_description">habit_description</string>
+    <string name="habit_period">habit_period</string>
+    <string name="habit_priority">habit_priority</string>
+    <string name="habit_type">habit_type</string>
+</resources>
