@@ -35,9 +35,15 @@ class EditActivity : AppCompatActivity() {
 
         binding.habitSaveButton.setOnClickListener {
 
-            var type = HabitType.Good
-            if (binding.habitTypeBad.text.toString() == "Плохая"){
-                type = HabitType.Bad
+            var type = HabitType.Bad
+            if (binding.habitTypeGood.id == binding.habitTypeGroup.checkedRadioButtonId) {
+                type = HabitType.Good
+            }
+            val priority = when (binding.editHabitPriority.selectedItem.toString()) {
+                "Низкий" -> HabitPriority.Low
+                "Средний" -> HabitPriority.Middle
+                "Высокий" -> HabitPriority.High
+                else -> HabitPriority.Low
             }
             val habit = Habit(
                 binding.editHabitName.text.toString(),
@@ -45,10 +51,9 @@ class EditActivity : AppCompatActivity() {
                 type,
                 binding.editHabitTimes.text.toString().toInt(),
                 binding.editHabitDays.text.toString().toInt(),
-                //HabitPriority.values()[selectedPriorityIndex]
-            1, "red"
+                priority,
+                "red"
                 )
-            println("Привычку создали")
             val intent = Intent()
             val bundle = Bundle().apply {
                 putString("CARD_JSON", Json{ ignoreUnknownKeys = true }.encodeToString(habit))

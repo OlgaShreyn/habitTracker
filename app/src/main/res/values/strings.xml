@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">habitTracker</string>
+    <string name="app_name">Трекер привычек</string>
     <string name="habit_name">habit_name</string>
     <string name="habit_description">habit_description</string>
     <string name="habit_period">habit_period</string>
@@ -11,10 +11,12 @@
     <string name="title_habit_priority">Приоритет</string>
     <string name="habit_type_good">Хорошая</string>
     <string name="habit_type_bad">Плохая</string>
-    <string name="repeat">Повторят</string>
+    <string name="repeat">Повторять</string>
     <string name="repeat_text">раз в</string>
     <string name="repeat_text_end">дней</string>
     <string name="save_button_text">Сохранить</string>
     <string name="add_habit">add_habit</string>
     <string name="edit_habit">edit_habit</string>
+    <string name="habit">привычка</string>
+    <string name="priority">приоритет</string>
 </resources>

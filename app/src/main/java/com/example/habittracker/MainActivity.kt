@@ -11,9 +11,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 val cards = mutableListOf(
-    Habit("a", "a", HabitType.Good, 2, 1, 1, "blue"),
-    Habit("aa", "aaa", HabitType.Good, 2, 2, 2, "green"),
-    Habit("aaa", "aaa", HabitType.Bad, 2, 2, 2, "gray"),
+    Habit("a", "a", HabitType.Good, 2, 1, HabitPriority.Middle, "blue"),
+    Habit("aa", "aaa", HabitType.Good, 2, 2, HabitPriority.High, "green"),
+    Habit("aaa", "aaa", HabitType.Bad, 2, 2, HabitPriority.Low, "gray"),
 )
 
 
@@ -38,14 +38,10 @@ class MainActivity : AppCompatActivity() {
         val resultAddLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                println("check2")
                 result.data?.let { intent ->
-                    val strJson = intent.getBundleExtra("habit")
-                    val a = strJson?.getString("CARD_JSON")
-                    println("check3")
-                    val ss = Json{ ignoreUnknownKeys = true }.decodeFromString<Habit>(a ?: "")
-                    adapter.addCard(ss)
-                    adapter.notifyDataSetChanged()
+                    val habitString = intent.getBundleExtra("habit")?.getString("CARD_JSON")
+                    val habit = Json{ ignoreUnknownKeys = true }.decodeFromString<Habit>(habitString ?: "")
+                    adapter.addCard(habit)
                 }
             }
         }
