@@ -1,10 +1,16 @@
 package com.example.habittracker
 
-class Habit(
+import android.os.Parcelable
+import org.json.JSONObject
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Habit(
     val name: String,
     val description: String,
     val type: HabitType,
-    val period: String,
+    val executionCount: Int,
+    val period: Int,
     val priority: Int,
     val color: String?
 )

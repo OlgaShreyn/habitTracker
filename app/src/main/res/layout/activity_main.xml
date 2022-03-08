@@ -13,4 +13,18 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:contentDescription="@string/addButton"
+            android:layout_margin="16dp" tools:ignore="MissingConstraints"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_input_add"
+            app:backgroundTint="#0CED8F"
+            app:tint="@android:color/white"
+            android:backgroundTintMode="src_in" android:minWidth="32dp" android:minHeight="32dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

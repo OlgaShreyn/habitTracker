@@ -23,6 +23,10 @@ class CardsAdapter(
         holder.bind(cards[position])
     }
 
+    fun addCard(habit: Habit) {
+        cards.add(habit)
+    }
+
     override fun getItemCount(): Int = cards.size
 
     class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,7 +41,7 @@ class CardsAdapter(
             title.text = habit.name
             description.text = habit.description
             priority.text = habit.priority.toString()
-            periodicity.text = habit.period
+            periodicity.text = habit.period.toString()
             type.text = habit.type.toString()
             try {
                 card.setCardBackgroundColor(Color.parseColor(habit.color))

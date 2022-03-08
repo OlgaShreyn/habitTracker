@@ -4,5 +4,17 @@
     <string name="habit_description">habit_description</string>
     <string name="habit_period">habit_period</string>
     <string name="habit_priority">habit_priority</string>
-    <string name="habit_type">habit_type</string>
+    <string name="habit_type">Тип привычки</string>
+    <string name="addButton">addButton</string>
+    <string name="title_habit_name">Название привычки</string>
+    <string name="title_habit_description">Описание</string>
+    <string name="title_habit_priority">Приоритет</string>
+    <string name="habit_type_good">Хорошая</string>
+    <string name="habit_type_bad">Плохая</string>
+    <string name="repeat">Повторят</string>
+    <string name="repeat_text">раз в</string>
+    <string name="repeat_text_end">дней</string>
+    <string name="save_button_text">Сохранить</string>
+    <string name="add_habit">add_habit</string>
+    <string name="edit_habit">edit_habit</string>
 </resources>
