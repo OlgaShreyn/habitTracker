@@ -3,24 +3,27 @@ package com.example.habittracker
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.iterator
 import com.example.habittracker.databinding.ActivityEditBinding
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 
 class EditActivity : AppCompatActivity() {
     companion object {
-        const val EXTRA_HABIT = "habit"
+        const val EDIT_HABIT = "habit"
 
-        fun getIntent(context: Context, habit: Habit? = null): Intent {
+        fun getIntent(context: Context, habit: Habit? = null, position: Int = -1): Intent {
             return Intent(context, EditActivity::class.java).also {
                 if (habit != null) {
                     val bundle = Bundle().apply {
                         putString("CARD_JSON", Json.encodeToString(habit))
-                        putInt("CARD_POSITION", 1) // todo change
+                        putInt("CARD_POSITION", position) // todo change
                     }
-                    it.putExtra(EXTRA_HABIT, bundle)
+                    it.putExtra(EDIT_HABIT, bundle)
                 }
             }
         }
@@ -29,11 +32,31 @@ class EditActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        var position = -1
         binding = ActivityEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.habitSaveButton.setOnClickListener {
+        if (intent.hasExtra(EDIT_HABIT)) {
+            title = getText(R.string.edit_habit)
+            val habitString = intent.getBundleExtra("habit")?.getString("CARD_JSON")
+            val habit = Json { ignoreUnknownKeys = true }.decodeFromString<Habit>(habitString ?: "")
+            position = intent.getBundleExtra("habit")?.getInt("CARD_POSITION") ?: -1
+
+            binding.apply {
+                editHabitName.setText(habit.name)
+                editHabitDescription.setText(habit.description)
+                //editHabitPriority.setSelection(habit.priority.toString().toInt())
+                //editHabitPriority.setSelection(editHabitPriority.iterator() habit.priority)
+                editHabitTimes.setText(habit.period.toString())
+                editHabitDays.setText(habit.days.toString())
+                (habitTypeGroup.getChildAt(habit.type.ordinal) as RadioButton).isChecked = true
+                val a = habit.priority.ordinal
+                editHabitPriority.setSelection(habit.priority.ordinal)
+            }
+        }
+        else {}
+
+            binding.habitSaveButton.setOnClickListener {
 
             var type = HabitType.Bad
             if (binding.habitTypeGood.id == binding.habitTypeGroup.checkedRadioButtonId) {
@@ -57,9 +80,9 @@ class EditActivity : AppCompatActivity() {
             val intent = Intent()
             val bundle = Bundle().apply {
                 putString("CARD_JSON", Json{ ignoreUnknownKeys = true }.encodeToString(habit))
-                putInt("CARD_POSITION", 1) // todo change
+                putInt("CARD_POSITION", position) // todo change
             }
-            intent.putExtra(EXTRA_HABIT, bundle)
+            intent.putExtra(EDIT_HABIT, bundle)
             setResult(RESULT_OK, intent)
             finish()
         }

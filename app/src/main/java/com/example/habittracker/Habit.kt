@@ -7,8 +7,8 @@ data class Habit(
     val name: String,
     val description: String,
     val type: HabitType,
-    val days: Int,
     val period: Int,
+    val days: Int,
     val priority: HabitPriority,
     val color: String?
 )

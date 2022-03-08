@@ -10,13 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class CardsAdapter(
+    private val onItemClickListener: View.OnClickListener,
     private val cards: MutableList<Habit>
 ) :
     RecyclerView.Adapter<CardsAdapter.CardViewHolder?>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        return CardViewHolder(inflater.inflate(R.layout.card_item, parent, false))
+        val view: View = LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.card_item, parent, false)
+        view.setOnClickListener(onItemClickListener)
+        return CardViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
@@ -25,6 +29,12 @@ class CardsAdapter(
 
     fun addCard(habit: Habit) {
         cards.add(habit)
+        this.notifyItemInserted(itemCount)
+    }
+
+    fun changeCard(habit: Habit, index:Int) {
+        cards[index] = habit
+        this.notifyItemChanged(index)
     }
 
     override fun getItemCount(): Int = cards.size
