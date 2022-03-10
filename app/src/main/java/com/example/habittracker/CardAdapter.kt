@@ -1,5 +1,6 @@
 package com.example.habittracker
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -43,25 +44,24 @@ class CardsAdapter(
         private val title: TextView = itemView.findViewById<View>(R.id.habit_name) as TextView
         private val description: TextView = itemView.findViewById<View>(R.id.habit_description) as TextView
         private val priority: TextView = itemView.findViewById<View>(R.id.habit_priority) as TextView
-        private val periodicity: TextView = itemView.findViewById<View>(R.id.habit_period) as TextView
-        private val days: TextView = itemView.findViewById<View>(R.id.habit_days) as TextView
+        private val periodicity: TextView = itemView.findViewById<View>(R.id.periodicity) as TextView
         private val type: TextView = itemView.findViewById<View>(R.id.habit_type) as TextView
         private val card: CardView = itemView.findViewById<View>(R.id.habit) as CardView
 
+        @SuppressLint("SetTextI18n")
         fun bind(habit: Habit) {
             title.text = habit.name
             description.text = habit.description
             priority.text = when (habit.priority.toString()) {
-                "Low" -> "Низкий"
-                "Middle" -> "Средний"
-                "High" -> "Высокий"
+                "Low" -> "Низкий приоритет"
+                "Middle" -> "Средний приоритет"
+                "High" -> "Высокий приоритет"
                 else -> "Неизвестный приоритет"
             }
-            periodicity.text = habit.period.toString()
-            days.text = habit.days.toString()
+            periodicity.text = "Повторять ${habit.count} раз в ${habit.days} дней"
             type.text = when (habit.type.toString()) {
-                "Good" -> "Хорошая"
-                "Bad" -> "Плохая"
+                "Good" -> "Хорошая привычка"
+                "Bad" -> "Плохая привычка"
                 else -> "Неизвестный тип"
             }
             try {

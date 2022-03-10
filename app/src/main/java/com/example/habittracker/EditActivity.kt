@@ -28,6 +28,7 @@ class EditActivity : AppCompatActivity() {
             }
         }
     }
+
     private lateinit var binding: ActivityEditBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,18 +46,13 @@ class EditActivity : AppCompatActivity() {
             binding.apply {
                 editHabitName.setText(habit.name)
                 editHabitDescription.setText(habit.description)
-                //editHabitPriority.setSelection(habit.priority.toString().toInt())
-                //editHabitPriority.setSelection(editHabitPriority.iterator() habit.priority)
-                editHabitTimes.setText(habit.period.toString())
+                editHabitTimes.setText(habit.count.toString())
                 editHabitDays.setText(habit.days.toString())
                 (habitTypeGroup.getChildAt(habit.type.ordinal) as RadioButton).isChecked = true
-                val a = habit.priority.ordinal
                 editHabitPriority.setSelection(habit.priority.ordinal)
             }
         }
-        else {}
-
-            binding.habitSaveButton.setOnClickListener {
+        binding.habitSaveButton.setOnClickListener {
 
             var type = HabitType.Bad
             if (binding.habitTypeGood.id == binding.habitTypeGroup.checkedRadioButtonId) {
@@ -76,10 +72,10 @@ class EditActivity : AppCompatActivity() {
                 binding.editHabitDays.text.toString().toInt(),
                 priority,
                 "red"
-                )
+            )
             val intent = Intent()
             val bundle = Bundle().apply {
-                putString("CARD_JSON", Json{ ignoreUnknownKeys = true }.encodeToString(habit))
+                putString("CARD_JSON", Json { ignoreUnknownKeys = true }.encodeToString(habit))
                 putInt("CARD_POSITION", position) // todo change
             }
             intent.putExtra(EDIT_HABIT, bundle)
