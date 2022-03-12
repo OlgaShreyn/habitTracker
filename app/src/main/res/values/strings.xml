@@ -19,4 +19,6 @@
     <string name="edit_habit">edit_habit</string>
     <string name="habit">привычка</string>
     <string name="priority">приоритет</string>
+    <string name="required_field_err">Обязательное поле!</string>
+    <string name="undo_button_text">Назад</string>
 </resources>

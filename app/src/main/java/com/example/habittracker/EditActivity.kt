@@ -53,10 +53,21 @@ class EditActivity : AppCompatActivity() {
             }
         }
         binding.habitSaveButton.setOnClickListener {
-
-            var type = HabitType.Bad
-            if (binding.habitTypeGood.id == binding.habitTypeGroup.checkedRadioButtonId) {
-                type = HabitType.Good
+           if (binding.editHabitName.text.toString().trim().isEmpty()) {
+                    binding.editHabitName.error = getString(R.string.required_field_err)
+               return@setOnClickListener
+                } else {
+                    binding.habitName.error = null
+                }
+            if (binding.editHabitTimes.text.toString().trim().isEmpty() ||
+                binding.editHabitDays.text.toString().trim().isEmpty() ) {
+                binding.editHabitDays.error = getString(R.string.required_field_err)
+                return@setOnClickListener
+            }
+            val type = when (binding.habitTypeGroup.checkedRadioButtonId) {
+                binding.habitTypeGood.id -> HabitType.Good
+                binding.habitTypeBad.id -> HabitType.Bad
+                else -> HabitType.Good
             }
             val priority = when (binding.editHabitPriority.selectedItem.toString()) {
                 "Низкий" -> HabitPriority.Low
@@ -76,10 +87,14 @@ class EditActivity : AppCompatActivity() {
             val intent = Intent()
             val bundle = Bundle().apply {
                 putString("CARD_JSON", Json { ignoreUnknownKeys = true }.encodeToString(habit))
-                putInt("CARD_POSITION", position) // todo change
+                putInt("CARD_POSITION", position)
             }
             intent.putExtra(EDIT_HABIT, bundle)
             setResult(RESULT_OK, intent)
+            finish()
+        }
+
+        binding.habitUndoButton.setOnClickListener {
             finish()
         }
     }
