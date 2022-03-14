@@ -5,6 +5,7 @@
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+            android:id="@+id/rootLinearLayout"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -115,6 +116,58 @@
                     android:text="@string/repeat_text_end"
             />
         </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+            <TextView
+                    android:id="@+id/selectedColorTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/habit_color_selected_label"
+            />
+
+            <com.example.habittracker.ColorPickerView
+                    android:id="@+id/selected_color_square"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+            />
+            <LinearLayout android:layout_height="wrap_content"
+                          android:layout_width="wrap_content"
+                          android:orientation="vertical"
+                          android:padding="15sp"
+            >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/hsv" android:text="@string/hsv"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/rgb" android:text="@string/rgb"/>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+                android:id="@+id/textBeforeColorPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="invisible"
+                android:text="@string/habit_color_choose_label"
+                tools:text="@string/habit_color_choose_label"/>
+        <HorizontalScrollView
+                android:id="@+id/scroll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/colorsPickerView"
+                          android:orientation="horizontal">
+            </LinearLayout>
+        </HorizontalScrollView>
 
     </LinearLayout>
 

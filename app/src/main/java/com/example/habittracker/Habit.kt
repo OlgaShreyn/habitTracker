@@ -10,5 +10,5 @@ data class Habit(
     val count: Int,
     val days: Int,
     val priority: HabitPriority,
-    val color: String?
+    val color: Int
 )

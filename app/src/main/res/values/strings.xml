@@ -15,10 +15,14 @@
     <string name="repeat_text">раз в</string>
     <string name="repeat_text_end">дней</string>
     <string name="save_button_text">Сохранить</string>
-    <string name="add_habit">add_habit</string>
-    <string name="edit_habit">edit_habit</string>
+    <string name="add_habit">Добавление</string>
+    <string name="edit_habit">Редактирование</string>
     <string name="habit">привычка</string>
     <string name="priority">приоритет</string>
     <string name="required_field_err">Обязательное поле!</string>
     <string name="undo_button_text">Назад</string>
+    <string name="habit_color_choose_label">Выбрать</string>
+    <string name="habit_color_selected_label">Цвет</string>
+    <string name="rgb">RGB: 255; 255; 255;</string>
+    <string name="hsv">HSV: 0; 0; 100</string>
 </resources>

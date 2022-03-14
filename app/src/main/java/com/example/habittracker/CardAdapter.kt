@@ -1,7 +1,6 @@
 package com.example.habittracker
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +64,7 @@ class CardsAdapter(
                 else -> "Неизвестный тип"
             }
             try {
-                card.setCardBackgroundColor(Color.parseColor(habit.color))
+                card.setCardBackgroundColor(habit.color)
             } catch (_: IllegalArgumentException) {
             }
         }

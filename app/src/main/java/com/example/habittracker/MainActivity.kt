@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.habittracker.databinding.ActivityMainBinding
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 val cards = mutableListOf<Habit>(
-    Habit("a", "a", HabitType.Good, 2, 1, HabitPriority.Middle, "blue"),
-//    Habit("aa", "aaa", HabitType.Good, 2, 2, HabitPriority.High, "green"),
-//    Habit("aaa", "aaa", HabitType.Bad, 2, 2, HabitPriority.Low, "gray"),
 )
+
+const val EDIT_HABIT = "EDIT HABIT"
+const val CARD_POSITION = "CARD POSITION"
+const val CARD_JSON = "CARD JSON"
 
 
 class MainActivity : AppCompatActivity() {
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result.data?.let { intent ->
-                    val habitString = intent.getBundleExtra("habit")?.getString("CARD_JSON")
+                    val habitString = intent.getBundleExtra(EDIT_HABIT)?.getString(CARD_JSON)
                     val habit = Json { ignoreUnknownKeys = true }.decodeFromString<Habit>(habitString ?: "")
                     adapter.addCard(habit)
                 }
@@ -57,16 +57,13 @@ class MainActivity : AppCompatActivity() {
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result.data?.let { intent ->
-                    val habitString = intent.getBundleExtra("habit")?.getString("CARD_JSON")
-                    val habitIndex = intent.getBundleExtra("habit")?.getInt("CARD_POSITION")
+                    val habitString = intent.getBundleExtra(EDIT_HABIT)?.getString(CARD_JSON)
+                    val habitIndex = intent.getBundleExtra(EDIT_HABIT)?.getInt(CARD_POSITION)
                     val habit = Json { ignoreUnknownKeys = true }.decodeFromString<Habit>(habitString ?: "")
                     adapter.changeCard(habit, habitIndex ?: 0)
                 }
             }
         }
-
-
-        //resultEditLauncher.launch(EditActivity.getIntent(this, item))
 
         binding.addButton.setOnClickListener {
             resultAddLauncher.launch(EditActivity.getIntent(this))
