@@ -19,11 +19,11 @@
                 android:text="@string/title_habit_name"
         />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_habit_name"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:inputType="text"/>
+                android:inputType="text" android:minHeight="48dp"/>
 
         <TextView
                 android:id="@+id/habit_description"
@@ -32,10 +32,11 @@
                 android:text="@string/title_habit_description"
         />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_habit_description"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:minHeight="48dp"
         />
 
         <TextView
@@ -50,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/priority"
-        />
+                android:minHeight="48dp"/>
 
         <TextView
                 android:id="@+id/habit_type"
@@ -89,12 +90,13 @@
                     android:text="@string/repeat"
             />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_habit_times"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:ems="2"
-                    android:inputType="numberDecimal"/>
+                    android:inputType="numberDecimal"
+                    android:minHeight="48dp" android:minWidth="48dp"/>
 
             <TextView
                     android:id="@+id/habit_days"
@@ -102,12 +104,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/repeat_text"/>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_habit_days"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:ems="2"
-                    android:inputType="numberDecimal" android:autofillHints="no"/>
+                    android:inputType="numberDecimal"
+                    android:minHeight="48dp"
+                    android:autofillHints="no" android:minWidth="48dp"/>
 
             <TextView
                     android:id="@+id/habit_days_continue"
@@ -133,7 +137,7 @@
             <com.example.habittracker.ColorPickerView
                     android:id="@+id/selected_color_square"
                     android:layout_width="80dp"
-                    android:layout_height="60dp"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
             />
             <LinearLayout android:layout_height="wrap_content"
@@ -171,31 +175,24 @@
 
     </LinearLayout>
 
-    <LinearLayout android:layout_height="78dp" android:layout_width="match_parent"
-                  tools:ignore="MissingConstraints"
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content"
                   app:layout_constraintBottom_toBottomOf="parent"
                   android:orientation="horizontal"
-                  app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="60dp"
-                  app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="60dp">
+                  android:padding="15sp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent">
         <Button
                 android:id="@+id/habit_undo_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/undo_button_text"
-                android:backgroundTint="#2196F3"
-                android:layout_margin="16dp"
-                android:layout_gravity="start"
-
-                tools:ignore="MissingConstraints"/>
+                style="@style/Widget.MaterialComponents.Button.TextButton"/>
         <Button
                 android:id="@+id/habit_save_button"
-                android:layout_width="132dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/save_button_text"
-                android:backgroundTint="#0CED8F"
-                android:layout_margin="16dp"
-                android:layout_gravity="end"
-                tools:ignore="MissingConstraints"/>
+                />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
