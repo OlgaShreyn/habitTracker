@@ -100,8 +100,9 @@ class EditActivity : AppCompatActivity() {
             )
             val intent = Intent()
             val bundle = Bundle().apply {
+                //putParcelable()
                 putString(CARD_JSON, Json { ignoreUnknownKeys = true }.encodeToString(habit))
-                putInt(CARD_POSITION, position)
+                putInt(CARD_POSITION, position) //аннотации,
             }
             intent.putExtra(EDIT_HABIT, bundle)
             setResult(RESULT_OK, intent)

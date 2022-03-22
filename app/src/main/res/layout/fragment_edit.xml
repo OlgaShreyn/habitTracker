@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:id="@+id/rootLinearLayout"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:textSize="14sp"
+                android:padding="15sp"
+        >
+            <TextView
+                    android:id="@+id/habit_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_habit_name"
+            />
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_habit_name"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:inputType="text" android:minHeight="48dp"/>
+
+            <TextView
+                    android:id="@+id/habit_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_habit_description"
+            />
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_habit_description"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:minHeight="48dp"
+            />
+
+            <TextView
+                    android:id="@+id/habit_priority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_habit_priority"
+            />
+
+            <Spinner
+                    android:id="@+id/edit_habit_priority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/priority"
+                    android:minHeight="48dp"/>
+
+            <TextView
+                    android:id="@+id/habit_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/habit_type"
+            />
+
+            <RadioGroup android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/habit_type_group"
+                        android:orientation="horizontal">
+                <RadioButton
+                        android:id="@+id/habit_type_good"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/habit_type_good"
+                        android:checked="true"
+                />
+                <RadioButton
+                        android:id="@+id/habit_type_bad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/habit_type_bad"
+                />
+            </RadioGroup>
+
+            <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+                <TextView
+                        android:id="@+id/habit_times"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/repeat"
+                />
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_habit_times"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:minHeight="48dp" android:minWidth="48dp"/>
+
+                <TextView
+                        android:id="@+id/habit_days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/repeat_text"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_habit_days"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:minHeight="48dp"
+                        android:autofillHints="no" android:minWidth="48dp"/>
+
+                <TextView
+                        android:id="@+id/habit_days_continue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/repeat_text_end"
+                />
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                <TextView
+                        android:id="@+id/selectedColorTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/habit_color_selected_label"
+                />
+
+                <com.example.habittracker.ColorPickerView
+                        android:id="@+id/selected_color_square"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                />
+                <LinearLayout android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:orientation="vertical"
+                              android:padding="15sp"
+                >
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/hsv" android:text="@string/hsv"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/rgb" android:text="@string/rgb"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                    android:id="@+id/textBeforeColorPicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:visibility="invisible"
+                    android:text="@string/habit_color_choose_label"
+                    tools:text="@string/habit_color_choose_label"/>
+            <HorizontalScrollView
+                    android:id="@+id/scroll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:id="@+id/colorsPickerView"
+                              android:orientation="horizontal">
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+        <LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      android:orientation="horizontal"
+                      android:padding="15sp"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent">
+            <Button
+                    android:id="@+id/habit_undo_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/undo_button_text"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"/>
+            <Button
+                    android:id="@+id/habit_save_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save_button_text"
+            />
+        </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
