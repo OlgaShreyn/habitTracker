@@ -25,4 +25,9 @@
     <string name="habit_color_selected_label">Цвет</string>
     <string name="rgb">RGB: 255; 255; 255;</string>
     <string name="hsv">HSV: 0; 0; 100</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_habits">Мои привычки</string>
+    <string name="about">О приложении</string>
+    <string name="habit_tracker_android_application_v01">habit_tracker_android_application_v01</string>
 </resources>

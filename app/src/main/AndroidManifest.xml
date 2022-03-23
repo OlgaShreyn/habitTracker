@@ -9,7 +9,6 @@
             android:roundIcon="@android:drawable/ic_menu_edit"
             android:supportsRtl="true"
             android:theme="@style/Theme.HabitTracker">
-        <activity android:name=".EditActivity"/>
         <activity
                 android:name="com.example.habittracker.MainActivity"
                 android:exported="true">
